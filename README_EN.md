@@ -87,7 +87,7 @@ New-NetworkReport -IncludeArp -IncludeDns -IncludeLatency -IncludeRouting -Inclu
 
 This creates:
 
-- **reports\NetworkReport.html** - Visual dashboard suitable for screenshots and documentation.
+- reports\NetworkReport.html - Visual dashboard suitable for screenshots and documentation.
 
-- **reports\NetworkReport.xlsx** = Multi-sheet Excel workbook, including system info, network info, DNS, latency, ARP, routing, firewall and SNMP
+- reports\NetworkReport.xlsx = Multi-sheet Excel workbook, including system info, network info, DNS, latency, ARP, routing, firewall and SNMP
 
