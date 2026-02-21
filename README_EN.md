@@ -91,3 +91,101 @@ This creates:
 
 - reports\NetworkReport.xlsx = Multi-sheet Excel workbook, including system info, network info, DNS, latency, ARP, routing, firewall and SNMP
 
+Minimal Report
+
+```powershell
+New-NetworkReport
+
+By default, the report includes system and network information. Additional checks can be enabled via switches.
+
+NOTE: Excel export uses the ImportExcel PowerShell module. 
+
+if ImportExcel is not installed, the HTML report is still generated.
+
+## OUI Vendor Lookup
+
+The module includes multiple OUI datasets that allow Invoke-ArpAnalysis to identify device manufacturers based on MAC address prefixes. 
+
+Available vendor sets:
+
+- Enterprise - Cisco, Juniper, HPE, Aruba, Dell, Fortinet, Palo Alto, etc.
+
+- Japan - NEC, Fujitsu, Sharp, Toshiba, Sony, Panasonic, Buffalo, Yamaha, etc.
+
+- Wireless - Ubiquiti, TP-Link, ASUS, Apple, Samsung, Google, Amazon, etc.
+
+Analyze ARP Table using the Enterprise vendor set
+
+```powershell
+Invoke-ArpAnalysis -VendorSet Enterprise
+
+Analyze ARP Table using the Japan-focused vendor set
+
+```powershell
+Invoke-ArpAnalysis 
+
+Analyze ARP Table using the Wireless vendor set
+
+```powershell
+Invoke-ArpAnalyzis -VendorSet Wireless
+
+Resolve hostnames during ARP Analysis
+
+```powershell
+Invoke-ArpAnalysis -VendorSet Enterprise -ResolveHostnames
+
+## OUI Data Files
+
+The OUI datasets are stored under:
+
+NetworkTools/data/oui/
+│   oui_enterprise.csv
+│   oui_japan.csv
+│   oui_wireless.csv
+
+Each file contains a Prefix and Vendor pairing.
+
+## Module Structure
+
+NetworkTools/
+│   NetworkTools.psd1
+│   NetworkTools.psm1
+│
+├── functions/
+│     ExportDhcpLeases.ps1
+│     Invoke-SubnetScan.ps1
+│     Invoke-DnsHealthCheck.ps1
+│     Invoke-LatencyJitterMonitor.ps1
+│     Invoke-RoutingTableAnalysis.ps1
+│     Invoke-FirewallRuleAudit.ps1
+│     Invoke-ArpAnalysis.ps1
+│     Invoke-SnmpSwitchMapper.ps1
+│     New-NetworkChangeLog.ps1
+│     New-NetworkReport.ps1
+│
+├── data/
+│     └── oui/
+│          oui_enterprise.csv
+│          oui_japan.csv
+│          oui_wireless.csv
+│
+└── docs/
+      README_EN.md
+      README_JP.md
+      LICENSE
+
+## Purpose
+
+This module was created to demonstrate practical PowerShell skills used in real network administration:
+
+* Modular function design
+* Clean, maintainable code
+* Automation-friendly output
+* Documentation aligned with industry standards
+* Realistic network diagnostic workflows
+* Excel-friendly reporting for Japanese enterprise environments
+
+## License
+
+This project is licensed under the MIT License. 
+See the LICENSE file for full details. 
