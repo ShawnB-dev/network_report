@@ -52,7 +52,7 @@ Import-Module .\NetworkTools -Force
 Get-Command -Module NetworkTools
 ```
 
-#### Usage Examples
+### Usage Examples
 
 ##### Scan a Subnet
 ###### powershell
